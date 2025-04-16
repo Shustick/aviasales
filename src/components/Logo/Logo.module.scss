@@ -1,0 +1,34 @@
+.logo {
+  position: relative;
+  width: 82px;
+  height: 89px;
+
+  overflow: hidden;
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    background: url('../../assets/Plane.svg') no-repeat 50% 50%;
+
+    left: 21px;
+    top: 19px;
+    width: 40px;
+    height: 40px;
+  }
+
+  &::before {
+    left: -39px;
+    top: 39px;
+  }
+
+  &:hover::after {
+    transition: 0.9s ease;
+    transform: translateY(-20px) translateX(60px);
+  }
+
+  &:hover::before {
+    transition: 0.9s ease;
+    transform: translateY(-20px) translateX(60px);
+  }
+}
