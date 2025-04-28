@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { toggleTabs } from '../../store/actions/tabActions';
+import { resetLoadMoreBtn } from '../../store/actions/loadMoreBtnActions';
 
 import styles from './Tabs.module.scss';
 
 function Tabs() {
-  const [activeTab, setActiveTab] = useState('cheapest'); //cheapest, fastest, optimal
+  const dispatch = useDispatch();
+  const activeTab = useSelector((state) => state.activeTab); //cheapest, fastest, optimal
   const handleTab = (ev) => {
+    dispatch(resetLoadMoreBtn());
     const clickedTab = ev.target.closest('li');
 
     if (clickedTab) {
       const selectedTab = clickedTab.classList[0];
-      setActiveTab(selectedTab);
+      dispatch(toggleTabs(selectedTab));
     }
   };
 

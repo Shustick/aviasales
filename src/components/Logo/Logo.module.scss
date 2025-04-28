@@ -3,32 +3,65 @@
   width: 82px;
   height: 89px;
 
-  overflow: hidden;
-  &::after,
-  &::before {
-    content: '';
-    position: absolute;
-    display: inline-block;
-    background: url('../../assets/Plane.svg') no-repeat 50% 50%;
+  &__static {
+    overflow: hidden;
 
-    left: 21px;
-    top: 19px;
-    width: 40px;
-    height: 40px;
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      background: url('../../assets/Plane.svg') no-repeat 50% 50%;
+
+      left: 21px;
+      top: 19px;
+      width: 40px;
+      height: 40px;
+    }
+
+    &::before {
+      left: -39px;
+      top: 39px;
+    }
+
+    &:hover::after {
+      transition: 0.9s ease;
+      transform: translateY(-20px) translateX(60px);
+    }
+
+    &:hover::before {
+      transition: 0.9s ease;
+      transform: translateY(-20px) translateX(60px);
+    }
   }
 
-  &::before {
-    left: -39px;
-    top: 39px;
-  }
+  &__loading {
+    &::after {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      background: url('../../assets/Plane.svg') no-repeat 50% 50%;
 
-  &:hover::after {
-    transition: 0.9s ease;
-    transform: translateY(-20px) translateX(60px);
-  }
+      left: 21px;
+      top: 19px;
+      width: 40px;
+      height: 40px;
 
-  &:hover::before {
-    transition: 0.9s ease;
-    transform: translateY(-20px) translateX(60px);
+      top: 0;
+      left: 0;
+      transform: rotate(30deg);
+
+      offset-path: path('M 41,40 m -50,0 a 50,50 0 1,0 100,0 a 50,50 0 1,0 -100,0');
+      offset-distance: 0%;
+      offset-rotate: auto;
+
+      animation: orbit 5s linear infinite;
+    }
+
+    @keyframes orbit {
+      100% {
+        offset-distance: 100%;
+      }
+    }
   }
 }

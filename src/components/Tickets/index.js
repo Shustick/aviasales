@@ -1,2 +1,4 @@
 import Tickets from './Tickets';
-export default Tickets;
+import withTickets from './withTickets';
+
+export default withTickets(Tickets);

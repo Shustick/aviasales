@@ -1,21 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 import { toggleCheckbox } from '../../store/actions/checkboxActions';
+import { resetLoadMoreBtn } from '../../store/actions/loadMoreBtnActions';
 
 import styles from './TransfersFilter.module.scss';
 
 function TransfersFilter() {
-  const checkboxData = useSelector((state) => state.checkbox);
   const dispatch = useDispatch();
+  const checkboxData = useSelector((state) => state.checkbox);
 
   const handleCheckbox = (id) => {
     dispatch(toggleCheckbox(id));
+    dispatch(resetLoadMoreBtn());
   };
-
-  useEffect(() => {
-    console.log(checkboxData);
-  }, [checkboxData]);
 
   return (
     <div className={styles.transfersFilter}>
