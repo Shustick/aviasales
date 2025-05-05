@@ -14,7 +14,6 @@ function Tabs() {
     dispatch(resetLoadMoreBtn());
     const clickedTab = ev.target.value;
     dispatch(toggleTabs(clickedTab));
-    console.log(clickedTab);
   };
 
   return (
