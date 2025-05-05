@@ -7,7 +7,6 @@ function withTickets(Component) {
   return function WithItems(props) {
     const checkboxData = useSelector((state) => state.checkbox);
     const ticketsData = useSelector((state) => state.tickets.tickets);
-    // const areTicketsLoaded = useSelector((state) => state.tickets.areTicketsLoaded);
     const activeTab = useSelector((state) => state.activeTab); //cheapest, fastest, optimal
     const visibleCount = useSelector((state) => state.loadMoreBtn);
     const warning = useSelector((state) => state.warning);
@@ -23,7 +22,7 @@ function withTickets(Component) {
         { totalPrice: 0, totalDuration: 0 }
       );
       if (totalPrice === 0) return 1;
-      return (totalDuration / totalPrice) * 1000;
+      return totalPrice / totalDuration;
     }, [ticketsData]);
 
     const sortedTickets = useMemo(() => {

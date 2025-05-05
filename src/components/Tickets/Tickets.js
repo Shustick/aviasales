@@ -3,9 +3,9 @@ import { formatTransferText, formatPrice, formatTimeRange, formatDuration } from
 import styles from './Tickets.module.scss';
 
 function Tickets({ visibleTickets, warning }) {
-  const tickets = visibleTickets.map((ticket, i) => {
+  const tickets = visibleTickets.map((ticket) => {
     return (
-      <div key={i} className={styles.ticket}>
+      <div key={ticket.id} className={styles.ticket}>
         <div className={styles.header}>
           <h1 className={styles.header__price}>{formatPrice(ticket.price)}</h1>
           <img
@@ -15,8 +15,8 @@ function Tickets({ visibleTickets, warning }) {
           />
         </div>
 
-        {ticket.segments.map((segment, j) => (
-          <div key={j} className={styles.flight}>
+        {ticket.segments.map((segment) => (
+          <div key={ticket.id + segment.origin + segment.destination} className={styles.flight}>
             <div className={styles.flight__description}>
               <span className={styles.flight__description__title}>
                 {segment.origin} – {segment.destination}

@@ -34,7 +34,7 @@ export const getTickets = (id) => async (dispatch) => {
         await dispatch(areTicketsLoaded(json.stop));
         stop = json.stop;
       } else {
-        throw new Error('Error fetching tickets');
+        throw new Error(`Error fetching tickets. Status: ${response.status}`);
       }
     } catch (error) {
       console.error(error);

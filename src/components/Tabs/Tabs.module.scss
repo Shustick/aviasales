@@ -1,12 +1,33 @@
 .tabs {
+  min-width: 502px;
   display: flex;
   cursor: pointer;
 
+  &__hidden_radio {
+    border: none;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
   &__tab {
+    width: 100%;
     padding: 15px;
     background-color: #fff;
     border: solid 1px #dfe5ec;
     white-space: nowrap;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #4a4a4a;
 
     &:not(:last-child) {
       border-right-color: transparent;
@@ -28,26 +49,11 @@
     }
   }
 
-  &__title {
-    width: 138px;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: 0.5px;
-    text-align: center;
-    vertical-align: middle;
-    text-transform: uppercase;
-    color: #4a4a4a;
-
-    .tabs__active & {
-      color: #ffffff;
-    }
-  }
-
   &__active {
     background-color: #2196f3;
     border: 1px solid #2196f3;
-    & + li {
+    color: #ffffff;
+    & + label {
       border-left-color: transparent;
     }
 
